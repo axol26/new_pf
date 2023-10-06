@@ -35,7 +35,11 @@ export default {
       axios.post("/send-email", this.formData)
         .then(response => {
           console.log(response.data);
-          alert("Email sent successfully.")
+          this.formData.name = "";
+          this.formData.email = "";
+          this.formData.subject = "";
+          this.formData.message = "";
+          alert("Email sent successfully.");
         })
         .catch(error => {
           console.log(error);
@@ -60,28 +64,28 @@ export default {
       
     <div id="home" class="flex w-full h-screen justify-center items-center overflow-hidden bg-gray-200">
       <div id="cols_cols0" class="w-2/4 pl-14">
-        <span id="topline" class="block relative text-4xl tracking-[5px] text-gray-700 after:absolute after:content-[''] after:h-1 after:w-[45px] after:bottom-2.5 after:bg-violet-800">Hello</span>
-        <h1 class="block font-black text-gray-700 text-7xl my-3">
-          I'm <Typer :text="['a Developer', 'an Engineer']" erase-style='backspace' />
+        <span id="topline" class="block font-semibold relative text-4xl tracking-[5px] text-gray-700 after:absolute after:content-[''] after:h-1 after:w-[45px] after:bottom-2.5 after:bg-violet-800">Hello</span>
+        <h1 class="block font-bold text-gray-700 text-7xl my-3">
+          I'm <Typer :text="['Leonard','a Developer', 'an Engineer']" erase-style='backspace' />
         </h1>
         <p class="block w-[90%] text-gray-700 text-xl text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend mauris nec augue laoreet sagittis. Etiam condimentum facilisis dui id elementum. Nulla cursus, risus sit amet dignissim porta, ante dui venenatis ex, in mattis eros odio a mi. Aliquam in pharetra arcu.</p>
         <div id="btns" class="w-[90%] items-center justify-center mt-3 text-left">
-          <a href=""><font-awesome-icon class="text-6xl text-violet-800" icon="fa-brands fa-github" beat-fade /></a>
-          <a href=""><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
+          <a href="https://github.com/axol26" target="_blank"><font-awesome-icon class="text-6xl text-violet-800" icon="fa-brands fa-github" beat-fade /></a>
+          <a href="https://www.linkedin.com/in/leonard-amiel-nania/" target="_blank"><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
         </div>
       </div>
 
       <div id="cols_cols1" class="w-2/4">
         <div id="imgbox" class="relative w-full h-full">
           <img src="stable-diffusion-xl_clipdrop-background-removal.png" id="splash" />
-          <img src="example_clipdrop-background-removal.png" id="profile" />
+          <img src="port.png" id="profile" />
         </div>
       </div>
     </div>
 
     <div id="stack" class="flex flex-col uppercase font-black tracking-wider w-full h-screen px-[7.5%] overflow-hidden">
       <div class="mt-[70px] text-4xl font-black tracking-widest flex justify-center">
-        Tech Stack
+        <span class="hover:text-violet-800 ease-in-out duration-500">Tech Stack</span>
       </div>
 
       <div class="w-full flex justify-center mt-1 mb-7">
@@ -156,7 +160,7 @@ export default {
 
     <div id="projects" class="flex flex-col w-full h-full items-center border-2 px-[7.5%] pb-10 bg-gray-200">
       <div class="mt-[70px] text-4xl font-black tracking-widest flex justify-center uppercase">
-        Projects
+        <span class="hover:text-violet-800 ease-in-out duration-500">Projects</span>
       </div>
 
       <div class="w-full flex justify-center mt-1 mb-7">
@@ -170,11 +174,11 @@ export default {
       
       <div class="flex flex-row flex-wrap justify-center items-center gap-10">
 
-        <a href="https://github.com/axol26/datacruncher" target="_blank" class="project-link group">
+        <a href="http://booklib.somee.com" target="_blank" class="project-link group">
           <div class="project-tile relative overflow-hidden rounded-2xl border-2 border-gray-400 hover:border-violet-800 ease-in-out duration-300">
 
             <div class="main-att">
-              <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="images/aspx-icon.svg" alt="project1">
+              <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="books_management.png" alt="project1">
               <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black">&lt;Book Market &#47;&gt;</figcaption>
             </div>
 
@@ -190,11 +194,11 @@ export default {
           </div>
         </a>
 
-        <a href="https://github.com/axol26/datacruncher" target="_blank" class="project-link group">
+        <a href="https://bookmarket.onrender.com" target="_blank" class="project-link group">
           <div class="project-tile relative overflow-hidden rounded-2xl border-2 border-gray-400 hover:border-violet-800 ease-in-out duration-300">
 
             <div class="main-att">
-              <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="images/repair-icon.svg" alt="project1">
+              <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="book_market.png" alt="project1">
               <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black">&lt;Book Management &#47;&gt;</figcaption>
             </div>
 
@@ -210,11 +214,11 @@ export default {
           </div>
         </a>
 
-        <a href="https://github.com/axol26/datacruncher" target="_blank" class="project-link group">
+        <a href="https://bookreview-t1vn.onrender.com" target="_blank" class="project-link group">
           <div class="project-tile relative overflow-hidden rounded-2xl border-2 border-gray-400 hover:border-violet-800 ease-in-out duration-300">
 
             <div class="main-att">
-              <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="images/aspx-icon.svg" alt="project1">
+              <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="books_review.png" alt="project1">
               <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black">&lt;Book Review &#47;&gt;</figcaption>
             </div>
 
@@ -241,7 +245,7 @@ export default {
             <div class="bg-att absolute inset-0 p-14 bg-gray-600 opacity-90 duration-500 ease-in-out translate-y-full group-hover:translate-y-0">
               <div class="flex flex-row flex-wrap justify-center items-center gap-3 h-full">
                 <svg @mouseover="changeText('| react.js')" @mouseleave="resetText()" class="opacity-100 hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32"><g transform="matrix(.05696 0 0 .05696 .647744 2.43826)" fill="none" fill-rule="evenodd"><circle r="50.167" cy="237.628" cx="269.529" fill="#00d8ff"/><g stroke="#00d8ff" stroke-width="24"><path d="M269.53 135.628c67.356 0 129.928 9.665 177.107 25.907 56.844 19.57 91.794 49.233 91.794 76.093 0 27.99-37.04 59.503-98.083 79.728-46.15 15.29-106.88 23.272-170.818 23.272-65.554 0-127.63-7.492-174.3-23.44-59.046-20.182-94.61-52.103-94.61-79.56 0-26.642 33.37-56.076 89.415-75.616 47.355-16.51 111.472-26.384 179.486-26.384z"/><path d="M180.736 186.922c33.65-58.348 73.28-107.724 110.92-140.48C337.006 6.976 380.163-8.48 403.43 4.937c24.248 13.983 33.042 61.814 20.067 124.796-9.8 47.618-33.234 104.212-65.176 159.6-32.75 56.788-70.25 106.82-107.377 139.272-46.98 41.068-92.4 55.93-116.185 42.213-23.08-13.3-31.906-56.92-20.834-115.233 9.355-49.27 32.832-109.745 66.8-168.664z"/><path d="M180.82 289.482C147.075 231.2 124.1 172.195 114.51 123.227c-11.544-59-3.382-104.11 19.864-117.566 24.224-14.024 70.055 2.244 118.14 44.94 36.356 32.28 73.688 80.837 105.723 136.173 32.844 56.733 57.46 114.21 67.036 162.582 12.117 61.213 2.31 107.984-21.453 121.74-23.057 13.348-65.25-.784-110.24-39.5-38.013-32.71-78.682-83.253-112.76-142.115z"/></g></g></svg>
-                <svg @mouseover="changeText('| bootstrap')" @mouseleave="resetText()" class="opcity-100 hover:scale-125 mx-2 ml-4 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32"><defs><linearGradient x1="262.624" y1="547.206" x2="375.377" y2="432.484" id="A" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#070135"/><stop offset="1" stop-color="#612d50"/></linearGradient></defs><g transform="matrix(.249635 0 0 .249239 -63.665715 -106.04659)"><rect width="128.016" height="128.546" ry="20.68" x="255.239" y="425.326" fill="url(#A)"/><path d="M320.213 480.665c3.27 0 5.748-.7 7.437-2.133s2.533-3.52 2.533-6.293c0-2.738-.844-4.818-2.533-6.24-1.7-1.458-4.168-2.187-7.437-2.187h-11.48v16.854h11.48m.7 34.827c4.167 0 7.293-.87 9.377-2.613 2.12-1.742 3.18-4.373 3.18-7.893 0-3.45-1.042-6.027-3.126-7.733-2.084-1.742-5.227-2.613-9.43-2.613h-12.18v20.854h12.18m19.293-28.64c4.455 1.28 7.904 3.645 10.347 7.093s3.664 7.68 3.665 12.694c0 7.68-2.623 13.405-7.868 17.174s-13.22 5.653-23.927 5.653h-34.436V449.84h31.15c11.173 0 19.257 1.67 24.25 5.013 5.03 3.342 7.545 8.694 7.545 16.054 0 3.876-.916 7.182-2.748 9.92-1.832 2.702-4.5 4.7-7.976 6.027" fill="#fff"/></g></svg>
+                <svg @mouseover="changeText('| bootstrap')" @mouseleave="resetText()" class="opcity-100 hover:scale-125 mx-2 ml-4 ease-in-out duration-300" preserveAspectRatio="xMidYMid" viewBox="0 0 256 204" width="64" height="64" xmlns="http://www.w3.org/2000/svg"><path d="m0 110.848v-110.848l96 55.424v36.9493333l-64-36.9493333v73.898667z" fill="#00b0ff"/><path d="m96 55.424 96-55.424v110.848l-64 36.949333-32-18.474666 64-36.9493337v-36.9493333l-64 36.9493333z" fill="#0081cb"/><path d="m96 129.322667v36.949333l64 36.949333v-36.949333z" fill="#00b0ff"/><path d="m160 203.221333 96-55.424v-73.8986663l-32 18.4746666v36.9493337l-64 36.949333zm64-147.797333v-36.9493333l32-18.4746667v36.9493333z" fill="#0081cb"/></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" class="opacity-100 hover:scale-125 mx-2 ease-in-out duration-300" width="64" height="64" overflow="visible" fill="#092e20"><path d="M27.724 0H38.2v48.44c-5.368 1.02-9.3 1.427-13.6 1.427-12.776 0-19.435-5.776-19.435-16.853 0-10.67 7.068-17.6 18.008-17.6 1.7 0 3 .135 4.553.543zm0 24.383c-1.223-.407-2.242-.543-3.533-.543-5.3 0-8.36 3.262-8.36 8.97 0 5.573 2.922 8.63 8.3 8.63 1.155 0 2.106-.068 3.6-.27zm27.113-8.223v24.26c0 8.36-.612 12.368-2.446 15.833-1.7 3.33-3.942 5.436-8.562 7.747l-9.718-4.62c4.62-2.174 6.863-4.076 8.3-7 1.495-3 1.97-6.456 1.97-15.56V16.16zM44.372.056h10.465v10.737H44.372z"/></svg>
                 <svg xmlns="http://www.w3.org/2000/svg" class="opacity-100 hover:scale-125 mx-2 ease-in-out duration-300"  height="64" viewBox="0 0 25.6 25.6" width="64"><g fill="none" stroke="#fff"><path d="M18.983 18.636c.163-1.357.114-1.555 1.124-1.336l.257.023c.777.035 1.793-.125 2.4-.402 1.285-.596 2.047-1.592.78-1.33-2.89.596-3.1-.383-3.1-.383 3.053-4.53 4.33-10.28 3.227-11.687-3.004-3.84-8.205-2.024-8.292-1.976l-.028.005c-.57-.12-1.2-.19-1.93-.2-1.308-.02-2.3.343-3.054.914 0 0-9.277-3.822-8.846 4.807.092 1.836 2.63 13.9 5.66 10.25C8.29 15.987 9.36 14.86 9.36 14.86c.53.353 1.167.533 1.834.468l.052-.044a2.01 2.01 0 0 0 .021.518c-.78.872-.55 1.025-2.11 1.346-1.578.325-.65.904-.046 1.056.734.184 2.432.444 3.58-1.162l-.046.183c.306.245.285 1.76.33 2.842s.116 2.093.337 2.688.48 2.13 2.53 1.7c1.713-.367 3.023-.896 3.143-5.81" fill="#000" stroke="#000" stroke-linecap="butt" stroke-width="2.149" class="D"/><path d="M23.535 15.6c-2.89.596-3.1-.383-3.1-.383 3.053-4.53 4.33-10.28 3.228-11.687-3.004-3.84-8.205-2.023-8.292-1.976l-.028.005a10.31 10.31 0 0 0-1.929-.201c-1.308-.02-2.3.343-3.054.914 0 0-9.278-3.822-8.846 4.807.092 1.836 2.63 13.9 5.66 10.25C8.29 15.987 9.36 14.86 9.36 14.86c.53.353 1.167.533 1.834.468l.052-.044a2.02 2.02 0 0 0 .021.518c-.78.872-.55 1.025-2.11 1.346-1.578.325-.65.904-.046 1.056.734.184 2.432.444 3.58-1.162l-.046.183c.306.245.52 1.593.484 2.815s-.06 2.06.18 2.716.48 2.13 2.53 1.7c1.713-.367 2.6-1.32 2.725-2.906.088-1.128.286-.962.3-1.97l.16-.478c.183-1.53.03-2.023 1.085-1.793l.257.023c.777.035 1.794-.125 2.39-.402 1.285-.596 2.047-1.592.78-1.33z" fill="#336791" stroke="none"/><g class="E"><g class="B"><path d="M12.814 16.467c-.08 2.846.02 5.712.298 6.4s.875 2.05 2.926 1.612c1.713-.367 2.337-1.078 2.607-2.647l.633-5.017M10.356 2.2S1.072-1.596 1.504 7.033c.092 1.836 2.63 13.9 5.66 10.25C8.27 15.95 9.27 14.907 9.27 14.907m6.1-13.4c-.32.1 5.164-2.005 8.282 1.978 1.1 1.407-.175 7.157-3.228 11.687" class="C"/><path d="M20.425 15.17s.2.98 3.1.382c1.267-.262.504.734-.78 1.33-1.054.49-3.418.615-3.457-.06-.1-1.745 1.244-1.215 1.147-1.652-.088-.394-.69-.78-1.086-1.744-.347-.84-4.76-7.29 1.224-6.333.22-.045-1.56-5.7-7.16-5.782S7.99 8.196 7.99 8.196" stroke-linejoin="bevel"/></g><g class="C"><path d="M11.247 15.768c-.78.872-.55 1.025-2.11 1.346-1.578.325-.65.904-.046 1.056.734.184 2.432.444 3.58-1.163.35-.49-.002-1.27-.482-1.468-.232-.096-.542-.216-.94.23z"/><path d="M11.196 15.753c-.08-.513.168-1.122.433-1.836.398-1.07 1.316-2.14.582-5.537-.547-2.53-4.22-.527-4.22-.184s.166 1.74-.06 3.365c-.297 2.122 1.35 3.916 3.246 3.733" class="B"/></g></g><g fill="#fff" class="D"><path d="M10.322 8.145c-.017.117.215.43.516.472s.558-.202.575-.32-.215-.246-.516-.288-.56.02-.575.136z" stroke-width=".239"/><path d="M19.486 7.906c.016.117-.215.43-.516.472s-.56-.202-.575-.32.215-.246.516-.288.56.02.575.136z" stroke-width=".119"/></g><path d="M20.562 7.095c.05.92-.198 1.545-.23 2.524-.046 1.422.678 3.05-.413 4.68" class="B C E"/></g></svg>
 
@@ -255,9 +259,9 @@ export default {
 
     </div>
 
-    <div id="contact" class="flex flex-col uppercase font-black tracking-wider w-full h-[calc(100vh-70px)] px-[7.5%] overflow-hidden border-2">
+    <div id="contact" class="flex flex-col uppercase font-black tracking-wider w-full h-[calc(100vh-70px)] px-[7.5%] overflow-hidden">
       <div class="mt-[70px] text-4xl font-black tracking-widest flex justify-center">
-        Contact
+        <span class="hover:text-violet-800 ease-in-out duration-500">Contact</span>
       </div>
 
       <div class="w-full flex justify-center mt-1 mb-7">
@@ -269,31 +273,31 @@ export default {
         </div>
       </div>
       
-      <div class="border-2 flex w-full bg-gray-100 rounded-xl">
+      <div class="border-2 flex w-full bg-gray-100 rounded-xl z-10 border-gray-400">
 
         <div class="w-2/5 flex flex-col justify-center gap-5 pl-6">
           <div class="text-lg flex items-center text-gray-700 uppercase">
-            <font-awesome-icon class="text-3xl hover:text-white hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-location-dot" /> Brgy 518 | Sampaloc, MNL
+            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-location-dot" /> Brgy 518 | Sampaloc, MNL
           </div>
           <div class="text-lg lowercase flex items-center text-gray-700">
-            <font-awesome-icon class="text-3xl hover:text-white hover:bg-gray-800 ease-in-out duration-300 border-2 p-3 mr-2 rounded-full" icon="fa-regular fa-envelope" /> leonardamiel.nania@gmail.com
+            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 p-3 mr-2 rounded-full" icon="fa-regular fa-envelope" /> leonardamiel.nania@gmail.com
           </div>
           <div class="text-lg flex items-center text-gray-700">
-            <font-awesome-icon class="text-3xl hover:text-white hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-mobile-screen-button" /> +63 927 (540) 1297
+            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-mobile-screen-button" /> +63 927 (540) 1297
           </div>
         </div>
 
         <div class="w-3/5">
 
           <div class="flex items-center justify-center gap-[5%] pt-3">
-            <input id="name" placeholder="Your Name" class="w-2/5 text-base rounded-lg p-3 my-3" v-model='formData.name' />
-            <input id="email" placeholder="Your Email" class="w-2/5 text-base rounded-lg p-3 my-3" v-model="formData.email" />
+            <input id="name" placeholder="Your Name" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model='formData.name' />
+            <input id="email" placeholder="Your Email" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model="formData.email" />
           </div>
           <div class="flex items-center justify-center">
-            <input id="subject" placeholder="Your Subject" class="w-[85%] text-base rounded-lg p-3 m-3" v-model="formData.subject" />
+            <input id="subject" placeholder="Your Subject" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" v-model="formData.subject" />
           </div>
           <div class="flex items-center justify-center">
-            <textarea id="message" placeholder="Your Message" class="w-[85%] text-base rounded-lg p-3 m-3" rows="4" v-model="formData.message" />
+            <textarea id="message" placeholder="Your Message" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" rows="4" v-model="formData.message" />
           </div>
           <div class="flex justify-center pt-3 pb-6">
             <button @click="submitForm()" style="font-size: 16px;" class="py-2 px-8 rounded-full text-white bg-violet-700 tracking-wider hover:bg-violet-600 ease-in-out duration-200">Send Message</button>
@@ -304,9 +308,10 @@ export default {
       </div>
     </div>
 
-    <footer class="w-full h-[70px] flex items-center bg-gray-300">
+    <footer class="w-full h-[70px] flex items-center bg-gray-300 relative">
+        <div class="h-16 absolute inset-x-0 -top-16 from-slate-300 w-full bg-gradient-to-t "></div>
         <div class="w-1/2 text-xl font-black tracking-wider text-right animate-pulse">
-          Created with
+          <span class="hover:text-violet-800 ease-in-out duration-1000">Created with</span>
         </div>
 
         <div class="w-1/2 flex">
@@ -333,15 +338,16 @@ export default {
 
 #profile {
   position:relative;
-  height: 100vh;
+  height: 90vh;
   width: calc(100% - 15vw);
-  bottom: -20px;
+  bottom: -50px;
   right: -100px;
+  transform: scaleX(-1);
   animation: animateUser 4s linear infinite;
 }
 @keyframes animateUser {
   50% {
-    bottom: 0px;
+    bottom: -30px;
   }
 }
 

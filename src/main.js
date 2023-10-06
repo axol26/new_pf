@@ -12,7 +12,7 @@ import { faLocationDot, faMobileScreenButton, faHouse, faCode, faLaptopCode, faP
 library.add(faGithub, faLinkedin, faEnvelope, faLocationDot, faMobileScreenButton, faHouse, faCode, faLaptopCode, faPhone)
 
 import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'https://portfolio0826-be.onrender.com';
 
 const app = createApp(App)
 
