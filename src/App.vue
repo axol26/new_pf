@@ -16,6 +16,7 @@ export default {
         subject: "",
         message: "",
       },
+      submitText: "Send Message",
     }
   },
   components: {
@@ -29,21 +30,27 @@ export default {
     resetText() {
       this.text = "";
       this.show = false;
-      
     },
+    
     submitForm() {
+      this.submitText = "Please Wait...";
+      
       axios.post("/send-email", this.formData)
-        .then(response => {
-          console.log(response.data);
-          this.formData.name = "";
-          this.formData.email = "";
-          this.formData.subject = "";
-          this.formData.message = "";
-          alert("Email sent successfully.");
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      .then(response => {
+        console.log(response.data);
+        this.formData.name = "";
+        this.formData.email = "";
+        this.formData.subject = "";
+        this.formData.message = "";
+        this.submitText = "Send Message";
+        alert("Email sent successfully.");
+      })
+      .catch(error => {
+        console.log(error);
+        alert("Email not sent, please try again.");
+        this.submitText = "Send Message";
+      });
+
     },
   }
 };
@@ -84,7 +91,7 @@ export default {
     </div>
 
     <div id="stack" class="flex flex-col uppercase font-black tracking-wider w-full h-screen px-[7.5%] overflow-hidden">
-      <div class="mt-[70px] text-4xl font-black tracking-widest flex justify-center">
+      <div class="mt-[70px] text-5xl font-bold tracking-widest flex justify-center">
         <span class="hover:text-violet-800 ease-in-out duration-500">Tech Stack</span>
       </div>
 
@@ -98,7 +105,7 @@ export default {
       </div>
       
       <div id="frontend" class="relative flex flex-col rounded-2xl justify-center items-center w-full h-1/5 mb-4 hover:scale-x-[1.15] hover:scale-y-125 hover:shadow-lg hover:shadow-gray-400 ease-in-out duration-300">
-        <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-black uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
+        <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-semibold uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
           Frontend Development
         </div>
         <div class="flex absolute inset-0 rounded-2xl hover:z-20 bg-white">
@@ -109,18 +116,18 @@ export default {
             <svg @mouseover="changeText('| javascript')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 124 141.53199999999998"><path d="M10.383 126.894L0 0l124 .255-10.979 126.639-50.553 14.638z" fill="#e9ca32"/><path d="M62.468 129.277V12.085l51.064.17-9.106 104.851z" fill="#ffde25"/><g fill="#fff"><path d="M57 26H43.5v78L33 102V91.5l-12.5-2V113l36.5 9.5zM67.127 26H104.5L102 40.95H81.394v24.533H102L99.5 115l-32.373 7.5V107L89 99.5 90.263 79l-23.136 3.35z"/></g></svg>
             <svg @mouseover="changeText('| jquery')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 32 32" fill="#0868ac"><path d="M2.144 7.705c-2.83 4.07-2.48 9.364-.316 13.7.05.104.105.206.158.308l.1.195c.02.038.042.075.063.112.037.07.075.134.113.202l.207.354.118.194.24.375.102.158c.113.168.228.336.347.5l.068.092a16.39 16.39 0 0 0 .316.42l.12.152.292.36.112.134c.133.157.27.313.407.465.014.015.02.02.024.026a20.44 20.44 0 0 0 .414.436l.133.134.33.324.135.13a16.98 16.98 0 0 0 .453.412l.496.42.17.136.343.268.183.14.385.276.18.127c.123.085.248.166.374.247l.162.108a20.81 20.81 0 0 0 .585.358l.162.1.44.246c.08.043.162.084.243.125l.314.163.073.035.13.062.498.23.105.047a17.83 17.83 0 0 0 .581.241l.14.056.548.203.07.024a21.72 21.72 0 0 0 .61.2l.148.044c.2.063.416.14.63.178 13.694 2.497 17.67-8.23 17.67-8.23-3.34 4.352-9.27 5.5-14.9 4.222-.213-.048-.42-.114-.627-.176l-.156-.047a18.62 18.62 0 0 1-.604-.197l-.083-.03a20.87 20.87 0 0 1-.532-.197l-.15-.06a15.16 15.16 0 0 1-.575-.24l-.115-.05-.485-.226-.14-.067c-.126-.06-.25-.127-.375-.2l-.25-.13c-.152-.08-.3-.166-.45-.252l-.152-.085a21.76 21.76 0 0 1-.585-.358c-.053-.034-.105-.07-.158-.105l-.416-.277c-.046-.03-.1-.064-.134-.094l-.394-.285-.175-.132-.355-.278-.158-.127-.442-.373a.73.73 0 0 0-.05-.04l-.465-.423-.13-.126-.332-.33-.13-.13c-.14-.143-.276-.287-.4-.434-.007-.007-.014-.014-.02-.022a16.98 16.98 0 0 1-.416-.474l-.1-.13-.3-.37-.1-.137-.346-.46C2.982 15.6 1.86 9.722 4.354 4.902m6.58-.625c-2.048 2.947-1.937 6.9-.34 10.008a13.06 13.06 0 0 0 .906 1.512c.307.44.647.963 1.054 1.316.148.163.302.32.46.477l.12.12a13.41 13.41 0 0 0 .469.436c.007.005.012.012.02.017.182.16.366.3.553.458l.124.097a13.46 13.46 0 0 0 .574.419l.017.012c.086.06.174.115.262.173.042.027.082.056.124.082a11.64 11.64 0 0 0 .425.26l.06.035.376.2c.044.025.1.046.134.07l.263.136c.013.007.027.012.04.018a11.39 11.39 0 0 0 .548.255l.12.05a14.16 14.16 0 0 0 .45.182l.192.07a14.26 14.26 0 0 0 .413.143l.187.06c.197.06.4.14.597.173 10.573 1.752 13.014-6.4 13.014-6.4-2.2 3.17-6.46 4.68-11.008 3.5a13.06 13.06 0 0 1-.599-.173c-.06-.018-.12-.038-.18-.058l-.42-.144-.2-.07a15.08 15.08 0 0 1-.45-.182l-.122-.05a12.58 12.58 0 0 1-.552-.256l-.277-.14-.16-.082a13.16 13.16 0 0 1-.35-.197l-.084-.047a12.34 12.34 0 0 1-.424-.26c-.043-.027-.085-.057-.128-.085l-.275-.182a13.24 13.24 0 0 1-.57-.418l-.13-.1c-2-1.572-3.568-3.72-4.318-6.154-.786-2.525-.617-5.36.745-7.66m5.732-.183C17.12 3.5 17 5.698 17.838 7.66c.883 2.083 2.693 3.716 4.806 4.5l.262.1.116.036.377.1c5.838 1.128 7.42-2.996 7.843-3.603-1.387 1.997-3.718 2.476-6.578 1.782-.226-.055-.474-.137-.692-.214a8.46 8.46 0 0 1-.822-.341 8.5 8.5 0 0 1-1.441-.879C19.15 7.2 17.56 3.486 19.23.47"/></svg>
             <svg @mouseover="changeText('| asp.net')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" height="64" width="64" version="1.1" id="Capa_1" viewBox="0 0 588.599 588.6" xml:space="preserve"><g><path d="M200.868,272.51c-4.293,0.108-7.183,0.588-8.688,1.042v27.73c1.793,0.4,3.997,0.538,7.038,0.538   c11.316-0.032,18.391-5.862,18.391-15.646C217.603,277.375,211.512,272.262,200.868,272.51z"/><path d="M56.694,276.404l-0.211,0.011c-1.118,5.055-2.225,11.465-3.452,16.355l-4.416,17.888l16.622,0.079l-4.735-18.035   C59.163,287.679,57.812,281.414,56.694,276.404z"/><path d="M539.573,49.198h-178.2c-0.791,0-1.561,0.077-2.342,0.124V0L11.227,46.419V540.98L359.031,588.6v-50.814   c0.781,0.053,1.551,0.116,2.342,0.116h178.2c20.851,0,37.8-16.96,37.8-37.8V86.999C577.373,66.16,560.423,49.198,539.573,49.198z    M73.648,347.319l-5.927-22.117l-21.526-0.348l-5.242,21.368l-16.941-0.56l22.178-83.207l22.319-0.772l24.213,86.289   L73.648,347.319z M123.599,350.319c-9.482-0.332-18.689-3.264-23.246-6.144l3.721-16.305c4.936,2.826,12.604,5.737,20.638,5.916   c8.732,0.19,13.402-3.575,13.402-9.471c0-5.621-4.037-8.859-14.151-12.783c-13.743-5.168-22.531-13.246-22.531-26.003   c0-14.963,11.588-26.823,31.261-27.53c9.618-0.345,16.79,1.551,21.956,3.808l-4.406,16.762c-3.473-1.685-9.595-4.11-17.927-3.916   c-8.234,0.19-12.192,4.245-12.192,8.867c0,5.677,4.701,8.145,15.588,12.438c15.19,5.84,22.455,14.247,22.455,27.156   C158.176,338.48,146.913,351.116,123.599,350.319z M230.391,308.327c-7.502,6.972-18.457,9.999-31.04,9.877   c-2.777-0.026-5.245-0.194-7.172-0.479v33.57l-20.417-0.675v-91.28c6.297-1.318,15.228-2.458,28.002-2.911   c13.168-0.459,22.708,1.772,29.173,6.708c6.252,4.693,10.492,12.661,10.492,22.161C239.424,294.814,236.21,302.875,230.391,308.327   z M304.525,355.071l-9.729-18.604c-3.952-7.088-6.452-12.361-9.439-18.193l-0.306-0.011c-2.194,5.774-4.833,10.947-8.09,17.824   l-8.608,17.771l-26.104-0.876l29.333-49.264l-28.308-48.094l26.314-0.913l9.073,17.906c3.108,6.022,5.452,10.876,7.952,16.487   h0.319c2.513-6.436,4.559-10.945,7.238-16.833l9.067-18.721l28.408-0.994l-30.949,50.517l32.632,52.956L304.525,355.071z    M555.773,500.102c0,8.933-7.268,16.199-16.2,16.199h-178.2c-0.802,0-1.571-0.115-2.342-0.231V71.041   c0.771-0.113,1.54-0.242,2.342-0.242h178.2c8.933,0,16.2,7.269,16.2,16.2V500.102z"/><polygon points="372.996,392.544 393.72,392.544 437.605,227.388 416.902,227.388  "/><polygon points="449.523,286.39 525.619,322.607 525.619,323.062 449.523,359.279 449.523,383.427 547.968,333.303    547.968,312.351 449.523,262.235  "/></g></svg>
-            <svg @mouseover="changeText('| react.js')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32"><g transform="matrix(.05696 0 0 .05696 .647744 2.43826)" fill="none" fill-rule="evenodd"><circle r="50.167" cy="237.628" cx="269.529" fill="#00d8ff"/><g stroke="#00d8ff" stroke-width="24"><path d="M269.53 135.628c67.356 0 129.928 9.665 177.107 25.907 56.844 19.57 91.794 49.233 91.794 76.093 0 27.99-37.04 59.503-98.083 79.728-46.15 15.29-106.88 23.272-170.818 23.272-65.554 0-127.63-7.492-174.3-23.44-59.046-20.182-94.61-52.103-94.61-79.56 0-26.642 33.37-56.076 89.415-75.616 47.355-16.51 111.472-26.384 179.486-26.384z"/><path d="M180.736 186.922c33.65-58.348 73.28-107.724 110.92-140.48C337.006 6.976 380.163-8.48 403.43 4.937c24.248 13.983 33.042 61.814 20.067 124.796-9.8 47.618-33.234 104.212-65.176 159.6-32.75 56.788-70.25 106.82-107.377 139.272-46.98 41.068-92.4 55.93-116.185 42.213-23.08-13.3-31.906-56.92-20.834-115.233 9.355-49.27 32.832-109.745 66.8-168.664z"/><path d="M180.82 289.482C147.075 231.2 124.1 172.195 114.51 123.227c-11.544-59-3.382-104.11 19.864-117.566 24.224-14.024 70.055 2.244 118.14 44.94 36.356 32.28 73.688 80.837 105.723 136.173 32.844 56.733 57.46 114.21 67.036 162.582 12.117 61.213 2.31 107.984-21.453 121.74-23.057 13.348-65.25-.784-110.24-39.5-38.013-32.71-78.682-83.253-112.76-142.115z"/></g></g></svg>
-            <svg @mouseover="changeText('| vue.js')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" aria-label="Vue" role="img" viewBox="0 0 64 64" version="1.1" id="svg8" sodipodi:docname="vue-icon.svg" width="64" height="64" inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata id="metadata14"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs id="defs12"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1566" inkscape:window-height="855" id="namedview10" showgrid="false" inkscape:zoom="10.546875" inkscape:cx="32" inkscape:cy="32" inkscape:window-x="70" inkscape:window-y="27" inkscape:window-maximized="0" inkscape:current-layer="svg8" inkscape:pagecheckerboard="true"/><path d="M 39.33333,5.5 32,18.33333 24.666667,5.5 H 0 L 32,61 64,5.5 Z" id="path4" inkscape:connector-curvature="0" style="fill:#42b883;stroke-width:0.16666667"/><path d="M 39.33333,5.5 32,18.33333 24.666667,5.5 H 12.833333 L 32,38.83333 51.16667,5.5 Z" id="path6" inkscape:connector-curvature="0" style="fill:#35495e;stroke-width:0.16666667"/></svg>
+            <svg @mouseover="changeText('| react')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32"><g transform="matrix(.05696 0 0 .05696 .647744 2.43826)" fill="none" fill-rule="evenodd"><circle r="50.167" cy="237.628" cx="269.529" fill="#00d8ff"/><g stroke="#00d8ff" stroke-width="24"><path d="M269.53 135.628c67.356 0 129.928 9.665 177.107 25.907 56.844 19.57 91.794 49.233 91.794 76.093 0 27.99-37.04 59.503-98.083 79.728-46.15 15.29-106.88 23.272-170.818 23.272-65.554 0-127.63-7.492-174.3-23.44-59.046-20.182-94.61-52.103-94.61-79.56 0-26.642 33.37-56.076 89.415-75.616 47.355-16.51 111.472-26.384 179.486-26.384z"/><path d="M180.736 186.922c33.65-58.348 73.28-107.724 110.92-140.48C337.006 6.976 380.163-8.48 403.43 4.937c24.248 13.983 33.042 61.814 20.067 124.796-9.8 47.618-33.234 104.212-65.176 159.6-32.75 56.788-70.25 106.82-107.377 139.272-46.98 41.068-92.4 55.93-116.185 42.213-23.08-13.3-31.906-56.92-20.834-115.233 9.355-49.27 32.832-109.745 66.8-168.664z"/><path d="M180.82 289.482C147.075 231.2 124.1 172.195 114.51 123.227c-11.544-59-3.382-104.11 19.864-117.566 24.224-14.024 70.055 2.244 118.14 44.94 36.356 32.28 73.688 80.837 105.723 136.173 32.844 56.733 57.46 114.21 67.036 162.582 12.117 61.213 2.31 107.984-21.453 121.74-23.057 13.348-65.25-.784-110.24-39.5-38.013-32.71-78.682-83.253-112.76-142.115z"/></g></g></svg>
+            <svg @mouseover="changeText('| vue')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" aria-label="Vue" role="img" viewBox="0 0 64 64" version="1.1" id="svg8" sodipodi:docname="vue-icon.svg" width="64" height="64" inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata id="metadata14"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs id="defs12"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1566" inkscape:window-height="855" id="namedview10" showgrid="false" inkscape:zoom="10.546875" inkscape:cx="32" inkscape:cy="32" inkscape:window-x="70" inkscape:window-y="27" inkscape:window-maximized="0" inkscape:current-layer="svg8" inkscape:pagecheckerboard="true"/><path d="M 39.33333,5.5 32,18.33333 24.666667,5.5 H 0 L 32,61 64,5.5 Z" id="path4" inkscape:connector-curvature="0" style="fill:#42b883;stroke-width:0.16666667"/><path d="M 39.33333,5.5 32,18.33333 24.666667,5.5 H 12.833333 L 32,38.83333 51.16667,5.5 Z" id="path6" inkscape:connector-curvature="0" style="fill:#35495e;stroke-width:0.16666667"/></svg>
           </div>
           <Transition class="flex items-center">
-            <div v-if="show" class="text-4xl w-full h-full">{{ text }}</div>
+            <div v-if="show" class="text-[42px] tracking-wider font-medium w-full h-full">{{ text }}</div>
           </Transition>
              
         </div>
       </div>
 
       <div id="frontend" class="relative flex flex-col rounded-2xl mt-4 justify-center items-center w-full h-1/5 my-4 hover:scale-x-[1.15] hover:scale-y-125 hover:shadow-lg hover:shadow-gray-400 ease-in-out duration-300">
-        <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-black uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
+        <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-semibold uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
           Backend Development
         </div>
         <div class="flex absolute inset-0 rounded-2xl hover:z-20 bg-white">
@@ -130,17 +137,17 @@ export default {
             <svg @mouseover="changeText('| springboot')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><path d="M58.2 3.365a29.503 29.503 0 0 1-3.419 6.064A32.094 32.094 0 1 0 9.965 55.372l1.186 1.047a32.08 32.08 0 0 0 52.67-22.253c.875-8.17-1.524-18.51-5.62-30.8zM14.53 55.558a2.744 2.744 0 1 1-.404-3.857 2.744 2.744 0 0 1 .404 3.857zm43.538-9.61c-7.92 10.55-24.83 6.99-35.672 7.502 0 0-1.922.113-3.857.43 0 0 .73-.31 1.663-.663 7.614-2.65 11.213-3.16 15.838-5.54 8.708-4.427 17.322-14.122 19.112-24.2-3.313 9.695-13.373 18.032-22.53 21.418-6.276 2.313-17.614 4.566-17.614 4.566l-.457-.245c-7.714-3.75-7.952-20.457 6.077-25.845 6.143-2.366 12.02-1.067 18.654-2.65 7.084-1.683 15.28-6.99 18.615-13.916 3.73 11.08 8.224 28.422.166 39.15z" fill="#68bd45"/></svg>
             <svg @mouseover="changeText('| php')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 32 32" width="64"><defs><clipPath id="A"><path d="M11.52 162C11.52 81.677 135.307 16.56 288 16.56S564.48 81.677 564.48 162 440.693 307.44 288 307.44 11.52 242.322 11.52 162"/></clipPath><radialGradient cx="0" cy="0" fx="0" fy="0" gradientTransform="matrix(363.05789,0,0,-363.05789,177.52002,256.30713)" gradientUnits="userSpaceOnUse" id="B" r="1" spreadMethod="pad"><stop offset="0" stop-color="#aeb2d5"/><stop offset=".3" stop-color="#aeb2d5"/><stop offset=".75" stop-color="#484c89"/><stop offset="1" stop-color="#484c89"/></radialGradient><clipPath id="C"><path d="M0 324h576V0H0v324z"/></clipPath><clipPath id="D"><path d="M0 324h576V0H0v324z"/></clipPath></defs><g transform="matrix(.05787 0 0 -.057079 -.666665 24.945283)"><g clip-path="url(#A)"><path d="M11.52 162C11.52 81.677 135.307 16.56 288 16.56S564.48 81.677 564.48 162 440.693 307.44 288 307.44 11.52 242.322 11.52 162" fill="url(#B)"/></g><g clip-path="url(#C)"><path d="M288 27.36c146.73 0 265.68 60.28 265.68 134.64S434.73 296.64 288 296.64 22.32 236.36 22.32 162 141.27 27.36 288 27.36" fill="#777bb3"/></g><g clip-path="url(#D)"><path d="M161.734 145.307c12.065 0 21.072 2.225 26.77 6.61 5.638 4.34 9.532 11.862 11.573 22.353 1.903 9.806 1.178 16.653-2.154 20.348-3.407 3.774-10.773 5.688-21.893 5.688h-19.28l-10.69-55h15.673zM98.67 77.557c-.895 0-1.745.4-2.314 1.092a3 3 0 0 0-.63 2.48l28.328 145.75a3 3 0 0 0 2.945 2.427h61.054c19.188 0 33.47-5.2 42.447-15.487 9.025-10.33 11.812-24.772 8.283-42.92-1.436-7.394-3.906-14.26-7.34-20.41-3.44-6.155-7.984-11.85-13.51-16.93-6.616-6.192-14.104-10.682-22.236-13.324-8.003-2.607-18.28-3.93-30.548-3.93h-24.722l-7.06-36.322a3 3 0 0 0-2.944-2.428H98.67z"/><path d="M159.224 197.307h16.808c13.42 0 18.083-2.945 19.667-4.7 2.628-2.914 3.124-9.058 1.435-17.767-1.898-9.75-5.416-16.663-10.458-20.545-5.162-3.974-13.554-5.988-24.94-5.988H149.7l9.523 49zm28.83 35H127a6 6 0 0 1-5.889-4.855L92.783 81.7a6 6 0 0 1 5.889-7.144h31.75a6 6 0 0 1 5.89 4.855l6.588 33.895h22.25c12.582 0 23.174 1.372 31.48 4.077 8.54 2.775 16.4 7.48 23.354 13.984 5.752 5.292 10.5 11.232 14.08 17.657s6.17 13.594 7.668 21.302c3.715 19.104.697 34.402-8.97 45.466-9.572 10.958-24.614 16.514-44.706 16.514m-45.633-90h19.313c12.8 0 22.336 2.41 28.6 7.234s10.492 12.875 12.688 24.157c2.1 10.832 1.144 18.476-2.87 22.93s-12.06 6.68-24.12 6.68h-21.754l-11.856-61m45.633 84c18.367 0 31.766-4.82 40.188-14.46s10.957-23.098 7.597-40.375c-1.383-7.117-3.722-13.624-7.015-19.52s-7.602-11.293-12.922-16.184c-6.34-5.933-13.383-10.16-21.133-12.68-7.75-2.525-17.62-3.782-29.62-3.782h-27.196l-7.53-38.75h-31.75L127 226.307h61.055" fill="#fff"/><path d="M311.583 116.307c-.896 0-1.745.4-2.314 1.092s-.802 1.6-.63 2.48l12.53 64.49c1.192 6.133.898 10.535-.827 12.395-1.056 1.137-4.228 3.044-13.607 3.044h-22.702l-15.755-81.072a3 3 0 0 0-2.945-2.428h-31.5a3 3 0 0 0-2.945 3.572l28.328 145.75a3 3 0 0 0 2.945 2.427h31.5a3 3 0 0 0 2.945-3.572l-6.836-35.178h24.422c18.605 0 31.22-3.28 38.57-10.028 7.5-6.884 9.827-17.89 6.947-32.72l-13.18-67.825a3 3 0 0 0-2.945-2.428h-32z"/><path d="M293.66 271.057h-31.5a6 6 0 0 1-5.89-4.855l-28.328-145.75a6 6 0 0 1 5.89-7.144h31.5a6 6 0 0 1 5.89 4.855l15.283 78.645h20.23c9.363 0 11.328-2 11.407-2.086.568-.61 1.315-3.44.082-9.78l-12.53-64.49a6 6 0 0 1 5.89-7.144h32a6 6 0 0 1 5.89 4.855l13.18 67.825c3.093 15.92.447 27.864-7.86 35.5-7.928 7.28-21.208 10.82-40.6 10.82h-20.784l6.143 31.605a6 6 0 0 1-5.89 7.145m0-6l-7.53-38.75h28.062c17.657 0 29.836-3.082 36.54-9.238s8.71-16.14 6.032-29.938l-13.18-67.824h-32l12.53 64.488c1.426 7.336.902 12.34-1.574 15.008s-7.746 4.004-15.805 4.004H281.56l-16.226-83.5h-31.5l28.328 145.75h31.5" fill="#fff"/><path d="M409.55 145.307c12.065 0 21.072 2.225 26.77 6.61 5.638 4.34 9.532 11.86 11.574 22.353 1.903 9.806 1.178 16.653-2.155 20.348-3.407 3.774-10.773 5.688-21.893 5.688h-19.28l-10.69-55h15.673zm-63.062-67.75c-.895 0-1.745.4-2.314 1.092a3 3 0 0 0-.631 2.48l28.328 145.75a3 3 0 0 0 2.946 2.427h61.053c19.19 0 33.47-5.2 42.448-15.487 9.025-10.33 11.81-24.77 8.283-42.92-1.438-7.394-3.907-14.26-7.342-20.41-3.44-6.155-7.984-11.85-13.51-16.93-6.616-6.192-14.104-10.682-22.236-13.324-8.003-2.607-18.28-3.93-30.548-3.93H388.24l-7.057-36.322a3 3 0 0 0-2.946-2.428h-31.75z"/><path d="M407.04 197.307h16.808c13.42 0 18.083-2.945 19.667-4.7 2.63-2.914 3.125-9.058 1.435-17.766-1.898-9.75-5.417-16.664-10.458-20.546-5.162-3.974-13.554-5.988-24.94-5.988h-12.033l9.522 49zm28.83 35h-61.054a6 6 0 0 1-5.889-4.855L340.6 81.7a6 6 0 0 1 5.889-7.144h31.75a6 6 0 0 1 5.89 4.855l6.587 33.895h22.25c12.582 0 23.174 1.372 31.48 4.077 8.54 2.775 16.4 7.48 23.356 13.986 5.752 5.29 10.488 11.23 14.078 17.655s6.17 13.594 7.668 21.302c3.715 19.105.697 34.403-8.97 45.467-9.572 10.957-24.613 16.513-44.706 16.513m-45.632-90h19.312c12.8 0 22.336 2.41 28.6 7.234s10.492 12.875 12.688 24.157c2.102 10.832 1.145 18.476-2.87 22.93s-12.06 6.68-24.12 6.68h-21.754l-11.855-61m45.632 84c18.367 0 31.766-4.82 40.188-14.46s10.957-23.098 7.597-40.375c-1.383-7.117-3.722-13.624-7.015-19.52s-7.602-11.293-12.922-16.184c-6.34-5.933-13.383-10.16-21.133-12.68-7.75-2.525-17.62-3.782-29.62-3.782h-27.196l-7.53-38.75h-31.75l28.328 145.75h61.054" fill="#fff"/></g></g></svg>
             <svg @mouseover="changeText('| laravel')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" width="64" height="64" viewBox="-4 0 264 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"><g><path d="M255.855641,59.619717 C255.950565,59.9710596 256,60.3333149 256,60.6972536 L256,117.265345 C256,118.743206 255.209409,120.108149 253.927418,120.843385 L206.448786,148.178786 L206.448786,202.359798 C206.448786,203.834322 205.665123,205.195421 204.386515,205.937838 L105.27893,262.990563 C105.05208,263.119455 104.804608,263.201946 104.557135,263.289593 C104.464333,263.320527 104.376687,263.377239 104.278729,263.403017 C103.585929,263.58546 102.857701,263.58546 102.164901,263.403017 C102.051476,263.372083 101.948363,263.310215 101.840093,263.26897 C101.613244,263.186479 101.376082,263.1143 101.159544,262.990563 L2.07258227,205.937838 C0.7913718,205.201819 0,203.837372 0,202.359798 L0,32.6555248 C0,32.2843161 0.0515567729,31.9234187 0.144358964,31.5728326 C0.175293028,31.454252 0.24747251,31.3459828 0.288717928,31.2274022 C0.366053087,31.0108638 0.438232569,30.7891697 0.55165747,30.5880982 C0.628992629,30.4540506 0.742417529,30.3457814 0.83521972,30.2220451 C0.953800298,30.0570635 1.06206952,29.8869261 1.20127281,29.7425672 C1.31985339,29.6239866 1.4745237,29.5363401 1.60857131,29.4332265 C1.75808595,29.3094903 1.89213356,29.1754427 2.06227091,29.0774848 L2.06742659,29.0774848 L51.6134853,0.551122364 C52.8901903,-0.183535768 54.4613221,-0.183535768 55.7380271,0.551122364 L105.284086,29.0774848 L105.294397,29.0774848 C105.459379,29.1805983 105.598582,29.3094903 105.748097,29.4280708 C105.882144,29.5311844 106.031659,29.6239866 106.15024,29.7374115 C106.294599,29.8869261 106.397712,30.0570635 106.521448,30.2220451 C106.609095,30.3457814 106.727676,30.4540506 106.799855,30.5880982 C106.918436,30.7943253 106.985459,31.0108638 107.06795,31.2274022 C107.109196,31.3459828 107.181375,31.454252 107.212309,31.5779883 C107.307234,31.9293308 107.355765,32.2915861 107.356668,32.6555248 L107.356668,138.651094 L148.643332,114.878266 L148.643332,60.6920979 C148.643332,60.3312005 148.694889,59.9651474 148.787691,59.619717 C148.823781,59.4959808 148.890804,59.3877116 148.93205,59.269131 C149.014541,59.0525925 149.08672,58.8308984 149.200145,58.629827 C149.27748,58.4957794 149.390905,58.3875102 149.478552,58.2637739 C149.602288,58.0987922 149.705401,57.9286549 149.84976,57.7842959 C149.968341,57.6657153 150.117856,57.5780688 150.251903,57.4749553 C150.406573,57.351219 150.540621,57.2171714 150.705603,57.1192136 L150.710758,57.1192136 L200.261973,28.5928511 C201.538395,27.8571345 203.110093,27.8571345 204.386515,28.5928511 L253.932573,57.1192136 C254.107866,57.2223271 254.241914,57.351219 254.396584,57.4697996 C254.525476,57.5729132 254.674991,57.6657153 254.793572,57.7791402 C254.93793,57.9286549 255.041044,58.0987922 255.16478,58.2637739 C255.257582,58.3875102 255.371007,58.4957794 255.443187,58.629827 C255.561767,58.8308984 255.628791,59.0525925 255.711282,59.269131 C255.757683,59.3877116 255.824707,59.4959808 255.855641,59.619717 Z M247.740605,114.878266 L247.740605,67.8378666 L230.402062,77.8192579 L206.448786,91.6106946 L206.448786,138.651094 L247.745761,114.878266 L247.740605,114.878266 Z M198.194546,199.97272 L198.194546,152.901386 L174.633101,166.357704 L107.351512,204.757188 L107.351512,252.27191 L198.194546,199.97272 Z M8.25939501,39.7961379 L8.25939501,199.97272 L99.0921175,252.266755 L99.0921175,204.762344 L51.6392637,177.906421 L51.6237967,177.89611 L51.603174,177.885798 C51.443348,177.792996 51.3093004,177.658949 51.1597857,177.545524 C51.0308938,177.44241 50.8813791,177.359919 50.7679542,177.246494 L50.7576429,177.231027 C50.6235953,177.102135 50.5307931,176.942309 50.4173682,176.79795 C50.3142546,176.658747 50.1905184,176.540167 50.1080276,176.395808 L50.1028719,176.380341 C50.0100697,176.22567 49.9533572,176.040066 49.8863334,175.864773 C49.8193096,175.710103 49.7316631,175.565744 49.6904177,175.400762 L49.6904177,175.395606 C49.6388609,175.19969 49.6285496,174.993463 49.6079269,174.792392 C49.5873041,174.637722 49.5460587,174.483051 49.5460587,174.328381 L49.5460587,174.31807 L49.5460587,63.5689658 L25.5979377,49.7723734 L8.25939501,39.8012935 L8.25939501,39.7961379 Z M53.6809119,8.89300821 L12.3994039,32.6555248 L53.6706006,56.4180414 L94.9469529,32.6503692 L53.6706006,8.89300821 L53.6809119,8.89300821 Z M75.1491521,157.19091 L99.0972731,143.404629 L99.0972731,39.7961379 L81.7587304,49.7775291 L57.8054537,63.5689658 L57.8054537,167.177457 L75.1491521,157.19091 Z M202.324244,36.934737 L161.047891,60.6972536 L202.324244,84.4597702 L243.59544,60.6920979 L202.324244,36.934737 Z M198.194546,91.6106946 L174.24127,77.8192579 L156.902727,67.8378666 L156.902727,114.878266 L180.850848,128.664547 L198.194546,138.651094 L198.194546,91.6106946 Z M103.216659,197.616575 L163.759778,163.052915 L194.023603,145.781396 L152.778185,122.034346 L105.289242,149.374903 L62.0073307,174.292291 L103.216659,197.616575 Z" fill="#FF2D20"></path></g></svg>
-            <svg @mouseover="changeText('| express.js')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64"><path d="M32 24.795c-1.164.296-1.884.013-2.53-.957l-4.594-6.356-.664-.88-5.365 7.257c-.613.873-1.256 1.253-2.4.944l6.87-9.222-6.396-8.33c1.1-.214 1.86-.105 2.535.88l4.765 6.435 4.8-6.4c.615-.873 1.276-1.205 2.38-.883l-2.48 3.288-3.36 4.375c-.4.5-.345.842.023 1.325L32 24.795zM.008 15.427l.562-2.764C2.1 7.193 8.37 4.92 12.694 8.3c2.527 1.988 3.155 4.8 3.03 7.95H1.48c-.214 5.67 3.867 9.092 9.07 7.346 1.825-.613 2.9-2.042 3.438-3.83.273-.896.725-1.036 1.567-.78-.43 2.236-1.4 4.104-3.45 5.273-3.063 1.75-7.435 1.184-9.735-1.248C1 21.6.434 19.812.18 17.9c-.04-.316-.12-.617-.18-.92q.008-.776.008-1.552zm1.498-.38h12.872c-.084-4.1-2.637-7.012-6.126-7.037-3.83-.03-6.58 2.813-6.746 7.037z"/></svg>
+            <svg @mouseover="changeText('| express')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64"><path d="M32 24.795c-1.164.296-1.884.013-2.53-.957l-4.594-6.356-.664-.88-5.365 7.257c-.613.873-1.256 1.253-2.4.944l6.87-9.222-6.396-8.33c1.1-.214 1.86-.105 2.535.88l4.765 6.435 4.8-6.4c.615-.873 1.276-1.205 2.38-.883l-2.48 3.288-3.36 4.375c-.4.5-.345.842.023 1.325L32 24.795zM.008 15.427l.562-2.764C2.1 7.193 8.37 4.92 12.694 8.3c2.527 1.988 3.155 4.8 3.03 7.95H1.48c-.214 5.67 3.867 9.092 9.07 7.346 1.825-.613 2.9-2.042 3.438-3.83.273-.896.725-1.036 1.567-.78-.43 2.236-1.4 4.104-3.45 5.273-3.063 1.75-7.435 1.184-9.735-1.248C1 21.6.434 19.812.18 17.9c-.04-.316-.12-.617-.18-.92q.008-.776.008-1.552zm1.498-.38h12.872c-.084-4.1-2.637-7.012-6.126-7.037-3.83-.03-6.58 2.813-6.746 7.037z"/></svg>
           </div>
           <Transition class="flex items-center">
-            <div v-if="show" class="text-4xl w-full h-full">{{ text }}</div>
+            <div v-if="show" class="text-[42px] tracking-wider font-medium w-full h-full">{{ text }}</div>
           </Transition>
           
         </div>
       </div>
 
       <div id="frontend" class="relative flex flex-col rounded-2xl mt-4 justify-center items-center w-full h-1/5 my-4 hover:scale-x-[1.15] hover:scale-y-125 hover:shadow-lg hover:shadow-gray-400 ease-in-out duration-300">
-        <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-black uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
+        <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-semibold uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
           Database Management
         </div>
         <div class="flex absolute inset-0 rounded-2xl hover:z-20 bg-white">
@@ -151,7 +158,7 @@ export default {
             <svg @mouseover="changeText('| mongodb')" @mouseleave="resetText()" class="hover:scale-125 mx-2 ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 32 32"><path d="M15.9.087l.854 1.604c.192.296.4.558.645.802.715.715 1.394 1.464 2.004 2.266 1.447 1.9 2.423 4.01 3.12 6.292.418 1.394.645 2.824.662 4.27.07 4.323-1.412 8.035-4.4 11.12-.488.488-1.01.94-1.57 1.342-.296 0-.436-.227-.558-.436-.227-.383-.366-.82-.436-1.255-.105-.523-.174-1.046-.14-1.586v-.244C16.057 24.21 15.796.21 15.9.087z" fill="#599636"/><path d="M15.9.034c-.035-.07-.07-.017-.105.017.017.35-.105.662-.296.96-.21.296-.488.523-.767.767-1.55 1.342-2.77 2.963-3.747 4.776-1.3 2.44-1.97 5.055-2.16 7.808-.087.993.314 4.497.627 5.508.854 2.684 2.388 4.933 4.375 6.885.488.47 1.01.906 1.55 1.325.157 0 .174-.14.21-.244a4.78 4.78 0 0 0 .157-.68l.35-2.614L15.9.034z" fill="#6cac48"/><path d="M16.754 28.845c.035-.4.227-.732.436-1.063-.21-.087-.366-.26-.488-.453-.105-.174-.192-.383-.26-.575-.244-.732-.296-1.5-.366-2.248v-.453c-.087.07-.105.662-.105.75a17.37 17.37 0 0 1-.314 2.353c-.052.314-.087.627-.28.906 0 .035 0 .07.017.122.314.924.4 1.865.453 2.824v.35c0 .418-.017.33.33.47.14.052.296.07.436.174.105 0 .122-.087.122-.157l-.052-.575v-1.604c-.017-.28.035-.558.07-.82z" fill="#c2bfbf"/></svg>
           </div>
           <Transition class="flex items-center">
-            <div v-if="show" class="text-4xl w-full h-full">{{ text }}</div>
+            <div v-if="show" class="text-[42px] tracking-wider font-medium w-full h-full">{{ text }}</div>
           </Transition>
           
         </div>
@@ -159,7 +166,7 @@ export default {
     </div>
 
     <div id="projects" class="flex flex-col w-full h-full items-center border-2 px-[7.5%] pb-10 bg-gray-200">
-      <div class="mt-[70px] text-4xl font-black tracking-widest flex justify-center uppercase">
+      <div class="mt-[70px] text-5xl font-bold tracking-widest flex justify-center uppercase">
         <span class="hover:text-violet-800 ease-in-out duration-500">Projects</span>
       </div>
 
@@ -179,7 +186,7 @@ export default {
 
             <div class="main-att">
               <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="books_management.png" alt="project1">
-              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black">&lt;Book Market &#47;&gt;</figcaption>
+              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-semibold">&lt;Book Market &#47;&gt;</figcaption>
             </div>
 
             <div class="bg-att absolute inset-0 p-14 bg-gray-600 opacity-90 duration-500 ease-in-out translate-y-full group-hover:translate-y-0">
@@ -199,7 +206,7 @@ export default {
 
             <div class="main-att">
               <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="book_market.png" alt="project1">
-              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black">&lt;Book Management &#47;&gt;</figcaption>
+              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-semibold">&lt;Book Management &#47;&gt;</figcaption>
             </div>
 
             <div class="bg-att absolute inset-0 p-14 bg-gray-600 opacity-90 duration-500 ease-in-out translate-y-full group-hover:translate-y-0">
@@ -219,7 +226,7 @@ export default {
 
             <div class="main-att">
               <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="books_review.png" alt="project1">
-              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black">&lt;Book Review &#47;&gt;</figcaption>
+              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-semibold">&lt;Book Review &#47;&gt;</figcaption>
             </div>
 
             <div class="bg-att absolute inset-0 p-14 bg-gray-600 opacity-90 duration-500 ease-in-out translate-y-full group-hover:translate-y-0">
@@ -239,7 +246,7 @@ export default {
 
             <div class="main-att">
               <img class="relative h-[250px] w-[350px] -top-[20px] group-hover:top-0 duration-300 ease-in-out" src="images/repair-icon.svg" alt="project1">
-              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-black text-red-600">&lt;Book Podcast &#47;&gt;</figcaption>
+              <figcaption class="absolute bottom-0 w-full bg-gray-400 text-center group-hover:bottom-[-30px] duration-300 ease-in-out text-xl font-semibold text-red-600">&lt;Book Podcast &#47;&gt;</figcaption>
             </div>
 
             <div class="bg-att absolute inset-0 p-14 bg-gray-600 opacity-90 duration-500 ease-in-out translate-y-full group-hover:translate-y-0">
@@ -260,7 +267,7 @@ export default {
     </div>
 
     <div id="contact" class="flex flex-col uppercase font-black tracking-wider w-full h-[calc(100vh-70px)] px-[7.5%] overflow-hidden">
-      <div class="mt-[70px] text-4xl font-black tracking-widest flex justify-center">
+      <div class="mt-[70px] text-5xl font-semibold tracking-widest flex justify-center">
         <span class="hover:text-violet-800 ease-in-out duration-500">Contact</span>
       </div>
 
@@ -277,17 +284,17 @@ export default {
 
         <div class="w-2/5 flex flex-col justify-center gap-5 pl-6">
           <div class="text-lg flex items-center text-gray-700 uppercase">
-            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-location-dot" /> Brgy 518 | Sampaloc, MNL
+            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full group" icon="fa-solid fa-location-dot" /> <span class="font-bold">Brgy 518 | Sampaloc, MNL</span>
           </div>
           <div class="text-lg lowercase flex items-center text-gray-700">
-            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 p-3 mr-2 rounded-full" icon="fa-regular fa-envelope" /> leonardamiel.nania@gmail.com
+            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 p-3 mr-2 rounded-full" icon="fa-regular fa-envelope" /> <span class="font-bold">leonardamiel.nania@gmail.com</span>
           </div>
           <div class="text-lg flex items-center text-gray-700">
-            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-mobile-screen-button" /> +63 927 (540) 1297
+            <font-awesome-icon class="text-3xl hover:text-violet-700 hover:bg-gray-800 ease-in-out duration-300 border-2 px-4 p-3 mr-2 rounded-full" icon="fa-solid fa-mobile-screen-button" /> <span class="font-bold">+63 927 (540) 1297</span>
           </div>
         </div>
 
-        <div class="w-3/5">
+        <div class="w-3/5 font-semibold">
 
           <div class="flex items-center justify-center gap-[5%] pt-3">
             <input id="name" placeholder="Your Name" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model='formData.name' />
@@ -300,7 +307,7 @@ export default {
             <textarea id="message" placeholder="Your Message" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" rows="4" v-model="formData.message" />
           </div>
           <div class="flex justify-center pt-3 pb-6">
-            <button @click="submitForm()" style="font-size: 16px;" class="py-2 px-8 rounded-full text-white bg-violet-700 tracking-wider hover:bg-violet-600 ease-in-out duration-200">Send Message</button>
+            <button @click="submitForm()" style="font-size: 16px;" class="font-bold py-2 px-8 rounded-full text-white bg-violet-700 tracking-wider hover:bg-violet-600 ease-in-out duration-200">{{ submitText }}</button>
           </div>
           
         </div>
@@ -309,21 +316,21 @@ export default {
     </div>
 
     <footer class="w-full h-[70px] flex items-center bg-gray-300 relative">
-        <div class="h-16 absolute inset-x-0 -top-16 from-slate-300 w-full bg-gradient-to-t "></div>
-        <div class="w-1/2 text-xl font-black tracking-wider text-right animate-pulse">
-          <span class="hover:text-violet-800 ease-in-out duration-1000">Created with</span>
+        <div class="h-16 absolute inset-x-0 -top-16 from-gray-300 w-full bg-gradient-to-t"></div>
+        <div class="w-1/2 text-xl font-bold tracking-wider text-right animate-pulse">
+          <span class="hover:text-violet-700 ease-in-out duration-1000">Created with</span>
         </div>
 
-        <div class="w-1/2 flex">
-          <div class="flex">
+        <div class="w-1/2 flex items-center">
+          <div class="py-2 rounded-full hover:bg-violet-500 ease-in-out duration-1000">
             <svg @mouseover="changeText('| vue.js')" @mouseleave="resetText()" class="relative mx-2 animate-pulse" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" aria-label="Vue" role="img" viewBox="0 0 64 64" version="1.1" id="svg8" sodipodi:docname="vue-icon.svg" width="35" height="35" inkscape:version="0.92.4 (5da689c313, 2019-01-14)"><metadata id="metadata14"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs id="defs12"/><sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1566" inkscape:window-height="855" id="namedview10" showgrid="false" inkscape:zoom="10.546875" inkscape:cx="32" inkscape:cy="32" inkscape:window-x="70" inkscape:window-y="27" inkscape:window-maximized="0" inkscape:current-layer="svg8" inkscape:pagecheckerboard="true"/><path d="M 39.33333,5.5 32,18.33333 24.666667,5.5 H 0 L 32,61 64,5.5 Z" id="path4" inkscape:connector-curvature="0" style="fill:#42b883;stroke-width:0.16666667"/><path d="M 39.33333,5.5 32,18.33333 24.666667,5.5 H 12.833333 L 32,38.83333 51.16667,5.5 Z" id="path6" inkscape:connector-curvature="0" style="fill:#35495e;stroke-width:0.16666667"/></svg>
             </div>
 
-          <div class="flex">
+          <div class="py-2 px-2 rounded-full hover:bg-violet-500 ease-in-out duration-1000">
             <svg @mouseover="changeText('| tailwind')" @mouseleave="resetText()" class="relative animate-pulse" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 32 32" ><title>file_type_tailwind</title><path d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z" style="fill:#44a8b3"/></svg>
             </div>
 
-          <div class="flex">
+          <div class="py-2 rounded-full hover:bg-violet-500 ease-in-out duration-1000">
             <svg @mouseover="changeText('| express.js')" @mouseleave="resetText()" class="relative mx-2 animate-pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="35" height="35" ><path d="M32 24.795c-1.164.296-1.884.013-2.53-.957l-4.594-6.356-.664-.88-5.365 7.257c-.613.873-1.256 1.253-2.4.944l6.87-9.222-6.396-8.33c1.1-.214 1.86-.105 2.535.88l4.765 6.435 4.8-6.4c.615-.873 1.276-1.205 2.38-.883l-2.48 3.288-3.36 4.375c-.4.5-.345.842.023 1.325L32 24.795zM.008 15.427l.562-2.764C2.1 7.193 8.37 4.92 12.694 8.3c2.527 1.988 3.155 4.8 3.03 7.95H1.48c-.214 5.67 3.867 9.092 9.07 7.346 1.825-.613 2.9-2.042 3.438-3.83.273-.896.725-1.036 1.567-.78-.43 2.236-1.4 4.104-3.45 5.273-3.063 1.75-7.435 1.184-9.735-1.248C1 21.6.434 19.812.18 17.9c-.04-.316-.12-.617-.18-.92q.008-.776.008-1.552zm1.498-.38h12.872c-.084-4.1-2.637-7.012-6.126-7.037-3.83-.03-6.58 2.813-6.746 7.037z"/></svg>
             </div>
         </div>
