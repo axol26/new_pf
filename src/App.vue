@@ -47,7 +47,7 @@ export default {
       })
       .catch(error => {
         console.log(error);
-        alert("Email not sent, please try again.");
+        alert("Server might be down :( please try again later.");
         this.submitText = "Send Message";
       });
 
