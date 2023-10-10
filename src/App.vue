@@ -75,7 +75,7 @@ export default {
         <h1 class="font-bold text-gray-700 text-7xl my-3 w-full">
           I'm <Typer :text="['Leonard','a Developer', 'an Engineer']" erase-style='backspace' />
         </h1>
-        <p class="w-full text-gray-700 text-xl text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend mauris nec augue laoreet sagittis. Etiam condimentum facilisis dui id elementum. Nulla cursus, risus sit amet dignissim porta, ante dui venenatis ex, in mattis eros odio a mi. Aliquam in pharetra arcu.</p>
+        <p class="w-full text-gray-700 text-xl text-justify">I am a highly motivated and adaptable ECE with a strong passion for web development and automation technology. I have a proven track record of 3 years in Test Development Engineering. Currently seeking to leverage my technical expertise and analytical mindset to transition into the field of software engineering. Possessing foundations in programming, I am eager to embark on a career shift to be a full fledged Web Developer applying Devops practices.</p>
         <div id="btns" class="w-[90%] items-center justify-center mt-3 text-center lg:text-left">
           <a href="https://github.com/axol26" target="_blank"><font-awesome-icon class="text-6xl text-violet-800" icon="fa-brands fa-github" beat-fade /></a>
           <a href="https://www.linkedin.com/in/leonard-amiel-nania/" target="_blank"><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
