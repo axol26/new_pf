@@ -106,7 +106,7 @@ export default {
       
       <div id="frontend" class="relative flex flex-col rounded-2xl justify-center items-center w-full h-1/5 mb-4 hover:scale-x-[1.15] hover:scale-y-125 hover:shadow-lg hover:shadow-gray-400 ease-in-out duration-300">
         <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-semibold uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
-          Frontend Development
+          Frontend<span class="lg:block hidden"> Development</span>
         </div>
         <div class="flex absolute inset-0 rounded-2xl hover:z-20 bg-white">
           
@@ -128,7 +128,7 @@ export default {
 
       <div id="frontend" class="relative flex flex-col rounded-2xl mt-4 justify-center items-center w-full h-1/5 my-4 hover:scale-x-[1.15] hover:scale-y-125 hover:shadow-lg hover:shadow-gray-400 ease-in-out duration-300">
         <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-semibold uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
-          Backend Development
+          Backend<span class="lg:block hidden"> Development</span>
         </div>
         <div class="flex absolute inset-0 rounded-2xl hover:z-20 bg-white">
 
@@ -148,7 +148,7 @@ export default {
 
       <div id="frontend" class="relative flex flex-col rounded-2xl mt-4 justify-center items-center w-full h-1/5 my-4 hover:scale-x-[1.15] hover:scale-y-125 hover:shadow-lg hover:shadow-gray-400 ease-in-out duration-300">
         <div class="absolute inset-0 rounded-2xl bg-gray-800 opacity-100 text-white text-4xl tracking-wider font-semibold uppercase flex justify-center items-center z-10 hover:-z-10 hover:opacity-0 ease-in-out duration-700">
-          Database Management
+          Database<span class="lg:block hidden"> Management</span>
         </div>
         <div class="flex absolute inset-0 rounded-2xl hover:z-20 bg-white">
 
