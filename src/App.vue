@@ -313,14 +313,14 @@ export default {
         <div class="w-full lg:w-3/5 font-semibold">
 
           <div class="flex items-center justify-center gap-[5%] pt-3">
-            <input id="name" placeholder="Your Name" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model='formData.name' />
-            <input id="email" placeholder="Your Email" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model="formData.email" />
+            <input id="name" placeholder="Name" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model='formData.name' />
+            <input id="email" placeholder="Email" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-2/5 text-base rounded-lg p-3 my-3 ease-in-out duration-300" v-model="formData.email" />
           </div>
           <div class="flex items-center justify-center">
-            <input id="subject" placeholder="Your Subject" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" v-model="formData.subject" />
+            <input id="subject" placeholder="Subject" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" v-model="formData.subject" />
           </div>
           <div class="flex items-center justify-center">
-            <textarea id="message" placeholder="Your Message" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" rows="4" v-model="formData.message" />
+            <textarea id="message" placeholder="Message" class="focus:ring-2 focus:ring-inset focus:ring-violet-700 w-[85%] text-base rounded-lg p-3 m-3 ease-in-out duration-300" rows="4" v-model="formData.message" />
           </div>
           <div class="flex justify-center pt-3 pb-6">
             <button @click="submitForm()" style="font-size: 16px;" class="font-bold py-2 px-8 rounded-full text-white bg-violet-700 tracking-wider hover:bg-violet-600 ease-in-out duration-200">{{ submitText }}</button>
