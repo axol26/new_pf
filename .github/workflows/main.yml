@@ -34,3 +34,7 @@ jobs:
             VITE_VUE=${{ vars.VITE_VUE }}
             VITE_REACT=${{ vars.VITE_REACT }}
             VITE_BACKEND=${{ vars.VITE_BACKEND }}
+            VITE_AWS=${{ vars.VITE_AWS }}
+
+      - name: Execute Render Deploy
+        run: curl ${{ secrets.RENDER_API }}
