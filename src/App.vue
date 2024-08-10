@@ -17,6 +17,11 @@ export default {
         message: "",
       },
       submitText: "Send Message",
+      linkedinUrl: import.meta.env.VITE_LINKEDIN,
+      awsUrl: import.meta.env.VITE_AWS,
+      project1Url: import.meta.env.VITE_ASPX,
+      project2Url: import.meta.env.VITE_VUE,
+      project3Url: import.meta.env.VITE_REACT,
     }
   },
   components: {
@@ -52,7 +57,11 @@ export default {
       });
 
     },
-  }
+  },
+//  mounted() {
+//    const linkedinUrl = import.meta.VITE_LINKEDIN;
+//    console.log(linkedinUrl);
+//  },
 };
 </script>
 
@@ -77,8 +86,8 @@ export default {
         </h1>
         <p class="w-full text-gray-700 text-xl text-justify">I am a highly motivated and adaptable ECE with a strong passion for automation technology and Python programming.<br>And as AWS re/Start Graduate, I have gained knowledge on different AWS technologies and IT fundamentals, and ready to embark on a career to become a Cloud or DevOps Engineer.</p>
         <div id="btns" class="w-[90%] items-center justify-center mt-3 text-center lg:text-left">
-          <a href="https://www.linkedin.com/in/leonard-amiel-nania/" target="_blank"><font-awesome-icon class="text-6xl  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
-          <font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-aws" beat-fade />
+          <a :href=linkedinUrl target="_blank"><font-awesome-icon class="text-6xl  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
+          <a :href=awsUrl target="_blank"><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-aws" beat-fade /></a>
           <font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-python" beat-fade />
         </div>
       </div>
@@ -197,7 +206,7 @@ export default {
       
       <div class="flex flex-row flex-wrap justify-center items-center gap-10">
 
-        <a href="http://booklib123.somee.com" target="_blank" class="project-link group">
+        <a :href=project1Url target="_blank" class="project-link group">
           <div class="project-tile relative overflow-hidden rounded-2xl border-2 border-gray-400 hover:border-violet-800 ease-in-out duration-300">
 
             <div class="main-att">
@@ -217,7 +226,7 @@ export default {
           </div>
         </a>
 
-        <a href="https://bookmarket.onrender.com" target="_blank" class="project-link group">
+        <a :href=project2Url target="_blank" class="project-link group">
           <div class="project-tile relative overflow-hidden rounded-2xl border-2 border-gray-400 hover:border-violet-800 ease-in-out duration-300">
 
             <div class="main-att">
@@ -237,7 +246,7 @@ export default {
           </div>
         </a>
 
-        <a href="https://bookreview-t1vn.onrender.com" target="_blank" class="project-link group">
+        <a :href=project3Url target="_blank" class="project-link group">
           <div class="project-tile relative overflow-hidden rounded-2xl border-2 border-gray-400 hover:border-violet-800 ease-in-out duration-300">
 
             <div class="main-att">
@@ -295,7 +304,7 @@ export default {
         <div class="border-2 border-gray-400 w-1/6">
         </div>
       </div>
-      
+
       <div class="border-2 flex w-full bg-gray-100 rounded-xl z-10 border-gray-400">
 
         <div class="hidden lg:flex w-2/5 flex-col justify-center gap-5 pl-6">
