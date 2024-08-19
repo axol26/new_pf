@@ -18,6 +18,7 @@ export default {
       },
       submitText: "Send Message",
       linkedinUrl: import.meta.env.VITE_LINKEDIN,
+      githubUrl: import.meta.env.VITE_GITHUB,
       awsUrl: import.meta.env.VITE_AWS,
       project1Url: import.meta.env.VITE_ASPX,
       project2Url: import.meta.env.VITE_VUE,
@@ -87,6 +88,7 @@ export default {
         <p class="w-full text-gray-700 text-xl text-justify">I am a highly motivated and adaptable ECE with a strong passion for automation technology and Python programming.<br>And as AWS re/Start Graduate, I have gained knowledge on different AWS technologies and IT fundamentals, and ready to embark on a career to become a Cloud or DevOps Engineer.</p>
         <div id="btns" class="w-[90%] items-center justify-center mt-3 text-center lg:text-left">
           <a :href=linkedinUrl target="_blank"><font-awesome-icon class="text-6xl  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
+          <a :href=githubUrl target="_blank"><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-github" beat-fade /></a>
           <a :href=awsUrl target="_blank"><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-aws" beat-fade /></a>
           <font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-docker" beat-fade />
         </div>
