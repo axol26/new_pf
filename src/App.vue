@@ -88,7 +88,7 @@ export default {
         <div id="btns" class="w-[90%] items-center justify-center mt-3 text-center lg:text-left">
           <a :href=linkedinUrl target="_blank"><font-awesome-icon class="text-6xl  text-violet-800" icon="fa-brands fa-linkedin" beat-fade /></a>
           <a :href=awsUrl target="_blank"><font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-aws" beat-fade /></a>
-          <font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-python" beat-fade />
+          <font-awesome-icon class="text-6xl ml-8  text-violet-800" icon="fa-brands fa-docker" beat-fade />
         </div>
       </div>
 
