@@ -36,6 +36,8 @@ jobs:
             VITE_BACKEND=${{ vars.VITE_BACKEND }}
             VITE_AWS=${{ vars.VITE_AWS }}
             VITE_GITHUB=${{ vars.VITE_GITHUB }}
+            VITE_KUBERNETES=${{ vars.VITE_KUBERNETES }}
+            
 
       - name: Execute Render Deploy
         run: curl ${{ secrets.RENDER_API }}
